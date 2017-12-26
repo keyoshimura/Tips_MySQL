@@ -15,9 +15,34 @@ Sex char(2)
 外部キーを入れた場合、親テーブルを更新する子テーブルからの外部キー制約のせいでエーラーになることがありました面倒臭いことがある。
 理想としては、下記のような機能があると嬉しい。
 
-1。
-2.親テーブルの対象行がある削除された場合、子テーブルで同じデータが入っている行は削除する
+1.親テーブルの対象行が削除された場合、子テーブルで同じデータが入っている行は削除する
+2.親テーブルの更新内容を子テーブルに反映させる
+
+これはDDL段階で子テーブルに「CASCADE」制約を入れてあげるとどちらも制約をつけてくれる。
+実際のDDLのイメージは下記の通り。
+
+CREATE TABLE 子テーブル名(子カラム名 データ型,
+  FOREIGN KEY (子カラム名)
+  REFERENCES 親テーブル名(親カラム名)
+  ON UPDATE cascade ON DELETE cascade
+);
 
 
+ちなみに、更新やデリートにおける参照整合性のオプションは下記の通り記述する。
+（UPDATEの部分をDELETEにすればDELETE。「reference_option」の部分でオプションを選択することになる）
+
+CREATE TABLE 子テーブル名(子カラム名 データ型,
+  FOREIGN KEY (子カラム名)
+  REFERENCES 親テーブル名(親カラム名)
+  ON UPDATE reference_option
+);
+
+
+選択できる「reference_option」は下記の４点
+		UPDATE			DELETE
+RESTRICT	エラーになる		エラーになる
+CASCADE		参照先の変更に追従する	参照先が無くなると同時に削除される
+SET NULL	NULLに置き換わる		NULLに置き換わる
+NO ACTION	RESTRICTと同じ		RESTRICTと同じ
 
 
