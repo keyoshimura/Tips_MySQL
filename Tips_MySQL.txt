@@ -1,0 +1,10 @@
+Tips_Mysql
+
+●INT型で負の数字を許容しない。
+DDLの段階で「UNSIGNED」制約を付与する。
+
+例
+Create table test(
+member_id int unsigned not null,
+Sex char(2)
+);
