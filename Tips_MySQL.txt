@@ -8,3 +8,5 @@ Create table test(
 member_id int unsigned not null,
 Sex char(2)
 );
+
+利用シーンとしては「ID」とかかの種にはinyが使い捨てられている場合がありますので使用しないで、この制約をつけることで利用できる値が増える。
