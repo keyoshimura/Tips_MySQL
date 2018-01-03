@@ -66,5 +66,7 @@ mysql.server start
 
 mysql.server stop
 
+●MySQLに接続
+パスワードを設定していなければ下記を実行すればOK。
 
-
+mysql -u root
