@@ -70,3 +70,18 @@ mysql.server stop
 パスワードを設定していなければ下記を実行すればOK。
 
 mysql -u root
+
+●DBの確認と作成
+SHOW DATABASES; --現在あるDBの一覧
+CREATE DATABASE データベース名; -- DBの作成
+USE データベース名 -- 利用するデータベースを指定
+
+●実行中のクエリを停止する
+下記の流れ。
+1.実行中のクエリのプロセスIDを確認する
+show processlist;
+
+2.任意のプロセスIDのクエリをKILLする。（３のところにIDを入れてね）
+KILL 3;
+
+
