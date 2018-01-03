@@ -56,10 +56,15 @@ NO ACTION	RESTRICTと同じ		RESTRICTと同じ
 Numeric(9, 2)
 
 
+●MySQLの起動
+下記をプロンプトで実行する。
 
+mysql.server start
 
+●MySQLの停止
+下記をプロンプトで実行する。
 
-
+mysql.server stop
 
 
 
