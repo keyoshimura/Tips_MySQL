@@ -85,3 +85,7 @@ show processlist;
 KILL 3;
 
 
+●変数の設定
+set @test = (select max(num) from policy_ldb.cnv_for_et);
+set @test = 1;
+
